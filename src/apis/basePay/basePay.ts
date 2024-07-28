@@ -202,9 +202,14 @@ export class BasePay {
   }
   //=========================================申请交易账单
   protected async _applyTradeBill(data: any) {
-    let { apiUrl } = UrlMap.applyTradeBill;
-    apiUrl += `?bill_date=${data.bill_date}` + `&sub_mchid=${data.sub_mchid}` + `&bill_type=${data.bill_type}` + `&tar_type=${data.tar_type}`;
-    const result = await this.base.request.get<BillResult>(apiUrl);
+    let { apiUrl } = UrlMap.applyTradeBill
+    apiUrl =
+      apiUrl +
+      `?bill_date=${data.bill_date}` +
+      `&sub_mchid=${data.sub_mchid}` +
+      `&bill_type=${data.bill_type}` +
+      `&tar_type=${data.tar_type}`
+    const result = await this.base.request.get<BillResult>(apiUrl)
     return result.data
   }
   /**
